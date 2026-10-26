@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f4">
+  <meta name="description" content="Four copy-ready AI prompts for building modern Power BI KPI cards: three ChatGPT iterations and one Codex with Power BI MCP prompt.">
+  <title>Modern Power BI KPI Cards with AI | Power BI + AI Lab</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../" aria-label="Power BI and AI Lab home"><span class="brand-mark">P<span>+</span></span><span>POWER BI <i>+</i> AI LAB</span></a>
+    <nav aria-label="Main navigation"><a href="../../#prompts">Prompt library</a><a href="#chatgpt">Free ChatGPT path</a><a href="#codex">Codex + MCP path</a><a class="nav-cta" href="https://www.youtube.com/@PowerBIAILab" target="_blank" rel="noreferrer">YouTube ↗</a></nav>
+  </header>
+  <main id="top" class="tutorial-main">
+    <div class="breadcrumbs"><a href="../../">Prompt library</a><span>›</span><span>Modern Power BI KPI Cards with AI</span></div>
+    <section class="tutorial-hero">
+      <p class="eyebrow"><span class="live-dot"></span> POWER BI + AI LAB · TUTORIAL 001</p>
+      <h1>Modern Power BI<br><em>KPI Cards with AI</em></h1>
+      <p class="lede">Build a revenue KPI card through three design iterations, then use a separate Codex + Power BI MCP prompt to extend the style to three more measures.</p>
+      <div class="hero-chips"><span>4 exact prompts</span><span>3 ChatGPT iterations</span><span>1 Codex + MCP prompt</span></div>
+    </section>
+    <section class="path-panel" id="chatgpt">
+      <div class="path-heading"><span class="route-number manual">01</span><div><p class="eyebrow">PATH A · FREE CHAT OPTION</p><h2>ChatGPT or another LLM + manual Power BI</h2><p>Use an available free chat tier if it meets your needs. Free access, models, limits and features vary by provider and can change. This route does not require Codex or MCP.</p></div></div>
+      <div class="steps-note"><b>How to use:</b> Open a new AI chat, paste Prompt 1, then give feedback and paste Prompts 2 and 3 in the same conversation. Follow the generated manual Power BI instructions and validate the values in a native table.</div>
+      <article class="prompt-card">
+        <div class="prompt-title"><div><span class="iteration">ITERATION 01</span><h3>Simple revenue card</h3></div><button class="copy-button" data-copy="prompt-1">Copy prompt</button></div>
+        <details><summary>Expand full prompt</summary><pre id="prompt-1">You are a Principal Power BI developer. Help me create a simple revenue KPI card using the Power BI HTML Content custom visual.
+
+My table is StarterDailyKPI. These validated measures already exist:
+- [Total Revenue] — revenue in US dollars
+- [Revenue Target] — target in US dollars
+- [Revenue Attainment] — revenue divided by target
+
+They respond to Month, Region, and Store slicers. Keep these measures and their filter behavior unchanged.
+
+Create a DAX measure named [Revenue Card HTML] showing:
+- “Revenue” as the title
+- Revenue as the main value, using compact currency formatting
+- Target and attainment underneath
+
+Use a compact layout suitable for several cards in one row: white background, readable text, one subtle border, minimal padding, and no unnecessary outer spacing. Avoid fixed dimensions that cause scrolling. Do not hide overflow or clip content.
+
+At the top of the DAX, include clearly commented settings for colors, font sizes, border color/width, corner radius, padding, and text spacing. Make these easy for a beginner to adjust.
+
+Show “No data” for blank revenue, preserve zero values, and show “N/A” for blank attainment.
+
+Provide the complete DAX and brief visual setup instructions. Explain which settings to adjust if the card is too large or has extra space around it. State any visual-version limitations.
+
+This is version one of at least three iterations. Keep it simple—no charts, progress bars, or icons yet. Wait for my feedback before improving it.</pre></details>
+      </article>
+      <article class="prompt-card">
+        <div class="prompt-title"><div><span class="iteration">ITERATION 02</span><h3>Modern teal design</h3></div><button class="copy-button" data-copy="prompt-2">Copy prompt</button></div>
+        <details><summary>Expand full prompt</summary><pre id="prompt-2">Let’s create version two of the card. Make it look more modern while keeping it compact and readable alongside other cards.
+
+Use a restrained teal accent, a slim accent strip on the left, a subtle background tint, and clearer contrast between the main revenue value and supporting text. Improve spacing without making the card larger. Avoid heavy shadows.
+
+Keep the commented customization variables at the top of the DAX. Add clearly explained settings for the accent color and strip width.
+
+Preserve the existing measures, slicer behavior, currency formatting, and blank/zero handling. Do not add charts, progress bars, or icons yet. Avoid fixed dimensions, scrolling, clipped content, or unnecessary outer spacing.
+
+Provide the complete replacement [Revenue Card HTML] measure and briefly explain the design changes. Wait for my feedback before the next iteration.</pre></details>
+      </article>
+      <article class="prompt-card">
+        <div class="prompt-title"><div><span class="iteration">ITERATION 03</span><h3>Six-month revenue sparkline</h3></div><button class="copy-button" data-copy="prompt-3">Copy prompt</button></div>
+        <details><summary>Expand full prompt</summary><pre id="prompt-3">Let’s create version three by adding a compact six-month revenue sparkline. Keep the current styling and editable customization settings.
+
+Use [Total Revenue], 'StarterDailyKPI'[Date], and the Month slicer 'StarterDailyKPI'[Year Month]. Store and Region columns are [StoreName] and [Region].
+
+Period rules:
+- Default to the latest six calendar months in the dataset—not relative to today.
+- Use that default when the slicer is cleared, unrestricted, or all months/years are selected.
+- When one month is selected, make it the sixth and final month, preceded by five calendar months.
+- When several months are selected, consecutive or scattered, use the latest selected month as the sixth month.
+- Always show six consecutive calendar months, including months outside the slicer selection.
+
+Examples:
+- All months selected, with data ending December 2025: July–December 2025.
+- October 2025 selected: May–October 2025.
+- March and December 2025 selected: July–December 2025.
+
+Keep the anchor consistent across stores. Override date filters only for the sparkline window; preserve Store, Region, and other non-date filters. Keep the main card values tied to the actual slicer selection.
+
+Label the sparkline’s period. Preserve recorded zeros, show gaps for missing months, and safely handle incomplete history, flat or negative values, single-point and all-blank results.
+
+Use inline SVG supported by HTML Content, without JavaScript or external assets. Format SVG coordinates, line thickness and marker sizes using FORMAT(value, "0.000", "en-US"). Avoid "0.###", which can produce trailing decimal points such as "5.".
+
+Use descriptive __-prefixed DAX variables to avoid reserved-name collisions.
+
+Create helper measures if useful. Add beginner-friendly comments explaining the default period, selected-month behavior, filter handling, missing data and scaling. Include editable settings for month count, line color, thickness, height, markers and spacing.
+
+Keep the card compact without clipping content or hiding scrollbars.
+
+Provide complete DAX for any helper measures and the replacement HTML measure, with brief setup instructions. Include native-table checks for all months selected, one month selected, and scattered selections. Do not claim execution or rendering was tested.
+
+Wait for my feedback.</pre></details>
+      </article>
+      <p class="requirements"><b>Power BI requirement:</b> Power BI Desktop and the Power BI HTML Content custom visual are separate from the AI chat service and may have their own installation, licensing and version requirements. Confirm the visual works in your Power BI environment.</p>
+    </section>
+    <section class="path-panel codex-panel" id="codex">
+      <div class="path-heading"><span class="route-number codex">02</span><div><p class="eyebrow">PATH B · CODEX + POWER BI MCP</p><h2>VS Code, Codex and a connected Desktop model</h2><p>This advanced route uses Codex in VS Code with Power BI MCP to inspect the open synthetic model and create measures. Report layout edits require supported PBIP/PBIR source editing or manual placement; the modeling MCP does not edit report pages.</p></div></div>
+      <div class="steps-note"><b>Prerequisites:</b> VS Code with Codex, configured Power BI MCP, Power BI Desktop with the intended “Retail Pharmacy Sample” report open, and approved model permissions. Recheck the live connection each session. Do not accept terms or broaden permissions unless authorized.</div>
+      <article class="prompt-card">
+        <div class="prompt-title"><div><span class="iteration">CODEX EXTENSION</span><h3>Three matching KPI cards</h3></div><button class="copy-button" data-copy="prompt-4">Copy prompt</button></div>
+        <details><summary>Expand full prompt</summary><pre id="prompt-4">You are a Principal Power BI developer. Use the configured Power BI MCP to discover and connect to the open “Retail Pharmacy Sample” report in Power BI Desktop.
+
+Inspect the existing measures and use my completed HTML Content Revenue KPI card as the design reference. Identify the measure actually bound to that visual; do not assume an older Revenue HTML measure is the final version.
+
+Create matching HTML Content cards for:
+- [Filled Prescriptions]
+- [Gross Margin]
+- [Average Wait Minutes]
+
+Match the Revenue card’s colors, accent strip, typography, borders, spacing, and sparkline style. Keep the cards compact enough to fit together in the existing four-card row.
+
+Use the existing numeric measures unchanged:
+- Filled Prescriptions: whole-number count.
+- Gross Margin: percentage calculated from total gross profit divided by total revenue.
+- Average Wait Minutes: sample-weighted average, displayed in minutes.
+
+Do not invent targets, attainment percentages, or favorable/unfavorable trend rules for these metrics.
+
+For each sparkline:
+- All months selected or unrestricted: latest six calendar months in the dataset.
+- One month selected: that month plus the preceding five calendar months.
+- Exactly six selected: those exact months in chronological order.
+- Every other selection: latest six calendar months in the dataset.
+- Preserve Store and Region filters. Keep the main KPI value tied to the actual slicer selection.
+- Evaluate each existing measure separately for each plotted month. Preserve zeros and gaps for missing data.
+
+Reuse the Revenue helper where its logic applies. Do not modify it or the Revenue card. Use descriptive __-prefixed variables and FORMAT(value, "0.000", "en-US") for SVG numbers.
+
+Add beginner-friendly DAX comments and clearly labeled customization variables, following the Revenue measure.
+
+Before editing, save a local source backup. Limit changes strictly to:
+1. The new presentation measures and any essential new helpers.
+2. Replacing the three corresponding native KPI visuals with matching HTML Content visuals.
+
+Do not change existing measures, tables, columns, relationships, data, queries, slicers, charts, other pages, or the Revenue visual.
+
+The modeling MCP does not edit report layouts. Use supported PBIP/PBIR source editing for visual replacement only if the intended report source is verified. Otherwise, create the measures and provide exact manual placement/binding steps. Do not guess the report path.
+
+Validate each new card against its native numeric measure under identical filters, including totals, single/multiple selections, and blank/zero cases. Verify rendering separately where possible.
+
+Report exactly what changed, what was tested, and what remains pending. Do not publish or upload anything.</pre></details>
+      </article>
+    </section>
+    <section class="validation-note"><span class="note-icon">✓</span><div><h2>Validate before styling</h2><p>Generated DAX is a draft until checked. Compare each numeric measure in a native Power BI table or matrix under the same slicers as the card. Keep the card and report values in context; prompt text does not confirm execution or rendering.</p></div></section>
+    <p class="copy-status" role="status" aria-live="polite"></p>
+  </main>
+  <footer><a class="brand" href="../../"><span class="brand-mark">P<span>+</span></span><span>POWER BI <i>+</i> AI LAB</span></a><span>Practical tutorials. Synthetic data. Thoughtful validation.</span><a href="../../">Back to prompt library ↑</a></footer>
+  <script src="script.js" defer></script>
+</body>
+</html>
