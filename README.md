@@ -6,14 +6,13 @@ Responsive static website for GitHub Pages. It needs no build step or account fo
 
 Open `index.html` in a browser. The page uses a Google Fonts import for typography and falls back to system fonts if those fonts are unavailable.
 
-## Publish with GitHub Pages
+## Published site
 
-1. Create a public repository on GitHub named `power-bi-ai-lab-prompts` (or another available name).
-2. Add the files in this folder to the repository root: `index.html` and `styles.css`.
-3. In the repository, open **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**, select `main` and `/ (root)`, then save.
-5. Wait for the Pages deployment and open the URL shown in Settings → Pages. For a project repository it will usually be `https://<account>.github.io/<repository>/`.
-6. Check the site in a signed-out browser and try each enabled copy button before using the URL in a video description.
+- Repository: <https://github.com/LNDJ-Solutions/power-bi-ai-lab-prompts>
+- GitHub Pages: <https://lndj-solutions.github.io/power-bi-ai-lab-prompts/>
+- Source: `main` branch, repository root
+
+The first Pages build completed successfully on October 26, 2026, and the public URL was opened to verify the page content. When updating the site, commit changes to `main`; GitHub Pages will publish the new version automatically.
 
 ## Prompt publication status
 
