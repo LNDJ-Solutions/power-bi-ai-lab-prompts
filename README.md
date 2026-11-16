@@ -22,3 +22,11 @@ The public path is <https://lndj-solutions.github.io/power-bi-ai-lab-prompts/tut
 ## Future tutorial pages
 
 Keep this home page as the library index. Add one page per tutorial under `tutorials/`, linked from the index. Use the same two-path layout: Codex + VS Code + Power BI MCP, and ChatGPT/another available LLM with manual Power BI steps. Each version should state its prerequisites and preserve exact accepted prompt text, correction prompts and verified assumptions.
+
+
+## Tutorial: Revenue-to-Profit Sankey with AI
+
+The page at 	utorials/revenue-to-profit-sankey/ contains the three ChatGPT prompts for a Deneb/Vega Revenue-to-Profit Sankey. It demonstrates an initial build, filter-aware labels and tooltips, and a visual design pass. The prompts are examples; viewers should adapt and iterate for their own models.
+
+The public path is <https://lndj-solutions.github.io/power-bi-ai-lab-prompts/tutorials/revenue-to-profit-sankey/>.
+

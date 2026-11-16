@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f4">
+  <meta name="description" content="Three copy-ready ChatGPT prompts for building and refining a Revenue-to-Profit Sankey in Power BI with Deneb and Vega.">
+  <title>Power BI Revenue-to-Profit Sankey with AI | Power BI + AI Lab</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../modern-power-bi-kpi-cards/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../" aria-label="Power BI and AI Lab home"><span class="brand-mark">P<span>+</span></span><span>POWER BI <i>+</i> AI LAB</span></a>
+    <nav aria-label="Main navigation"><a href="../../#prompts">Prompt library</a><a href="#prompt-1">Build prompt</a><a href="#prompt-2">Iteration 2</a><a href="#prompt-3">Iteration 3</a><a class="nav-cta" href="https://www.youtube.com/@PowerBIAILab" target="_blank" rel="noreferrer">YouTube ↗</a></nav>
+  </header>
+  <main id="top" class="tutorial-main">
+    <div class="breadcrumbs"><a href="../../">Prompt library</a><span>›</span><span>Revenue-to-Profit Sankey</span></div>
+    <section class="tutorial-hero">
+      <p class="eyebrow"><span class="live-dot"></span> POWER BI + AI LAB · TUTORIAL 002</p>
+      <h1>Revenue to Gross Profit<br><em>Build a Sankey with AI</em></h1>
+      <p class="lede">Follow three ChatGPT prompts as a Power BI Sankey develops from its first financial flows to filter-aware labels, explanatory tooltips, and a more expressive design.</p>
+      <div class="hero-chips"><span>3 ChatGPT prompts</span><span>Deneb · Vega</span><span>Synthetic demo data</span></div>
+    </section>
+    <section class="path-panel" id="chatgpt">
+      <div class="path-heading"><span class="route-number manual">03</span><div><p class="eyebrow">CHATGPT + MANUAL POWER BI</p><h2>Build, refine, and style the Sankey</h2><p>These prompts show one way to request a custom Power BI visual. Replace the sample schema with your own exact names and follow the manual setup instructions returned by the AI.</p></div></div>
+      <div class="steps-note"><b>Before you start:</b> Use Power BI Desktop, your own matching model, and Deneb with the Vega provider. The examples use the synthetic `StarterDailyKPI` table. Power BI and Deneb have separate installation, licensing, and organization requirements. AI service features and limits vary.</div>
+      <article class="prompt-card" id="prompt-1">
+        <div class="prompt-title"><div><span class="iteration">PROMPT 01 · INITIAL BUILD</span><h3>Define the financial flows</h3></div><button class="copy-button" data-copy="sankey-prompt-1">Copy prompt</button></div>
+        <details><summary>Expand full prompt</summary><pre id="sankey-prompt-1">You are a Principal Power BI Dashboard Developer. Help me build a Revenue-to-Profit Sankey in my synthetic retail pharmacy Power BI report. You cannot see my open model, so use the exact details I provide and don't claim to edit or inspect Power BI.
+
+My table is `StarterDailyKPI`. Fields: `RxRevenueUSD`, `RxCOGSUSD`, `RxGrossProfitUSD`, `FrontStoreRevenueUSD`, `FrontStoreCOGSUSD`, `TotalRevenueUSD`, `TotalGrossProfitUSD`, `Year Month`, `Region`, and `StoreName`. Existing measures: `[Total Revenue] = SUM('StarterDailyKPI'[TotalRevenueUSD])`, `[Gross Profit] = SUM('StarterDailyKPI'[TotalGrossProfitUSD])`, `[Gross Margin] = DIVIDE([Gross Profit], [Total Revenue])`. Leave them unchanged.
+
+Build exactly four financial links: Rx revenue to Rx cost and Rx gross profit; front-store revenue to front-store cost and front-store gross profit. Calculate front-store gross profit as selected front-store revenue minus selected front-store cost. Gross profit excludes labor and overhead. This is a financial reconciliation, not a supplier or transfer flow.
+
+Give me the complete numeric DAX measures, a short native-table check, a complete Deneb Vega spec, exact fields to bind, and numbered manual Power BI steps to add, format, test and save the visual. Use the attached dashboard screenshot for the light-gray page, white chart panels, mint KPI cards, blue revenue, indigo cost and teal gross profit. Group easy-to-change style settings near the top of the Vega spec: colors, fonts, text sizes, node/link sizes, spacing, borders and corner rounding. Keep DAX numeric and readable; put visual styling in Vega. Use Vega, not Vega-Lite.
+
+Check against these reference values. Each line is revenue / cost / gross profit:
+- All data, Rx: $209,971,320.42 / $169,671,961.85 / $40,299,358.57
+- All data, front store: $14,234,910.02 / $8,816,975.28 / $5,417,934.74
+- Region A, Store All, May–October 2024, Rx: $14,136,327.46 / $11,292,657.05 / $2,843,670.41
+- Same selection, front store: $999,652.06 / $618,791.05 / $380,861.01
+
+Explain unfamiliar terms simply. Tell me what to check if the numbers or visual differ, and don't claim the chart rendered successfully until I observe it in Desktop.</pre></details>
+      </article>
+      <article class="prompt-card" id="prompt-2">
+        <div class="prompt-title"><div><span class="iteration">PROMPT 02 · FILTERS & TOOL TIPS</span><h3>Show context and explain the flows</h3></div><button class="copy-button" data-copy="sankey-prompt-2">Copy prompt</button></div>
+        <details><summary>Expand full prompt</summary><pre id="sankey-prompt-2">You are a Principal Power BI Dashboard Developer. Improve the Sankey you just built based on these requirements. Keep the same four financial flows, numeric DAX, data, report layout, and existing slicers. Do not rebuild unrelated parts of the report.
+
+1. Make the chart's context labels respond to the current Power BI filter selections for `Year Month`, `Region`, and `StoreName`. Show the selected month or month range, region, and store (or “All” when unfiltered). Handle one selection, multiple selections, and no selection clearly. Do not hard-code the screenshot's Region A or May–October 2024 values. Explain which Deneb fields or measures must be bound for the labels to update.
+
+2. Make the visual resize with its Power BI visual container if the installed Deneb/Vega version supports it. If fully responsive sizing is not supported, make the fallback easy for a beginner to edit: group and clearly name the width/height and the bar/node thickness, label size, spacing, padding, colors, border, and corner-radius settings near the top of the Vega spec. Explain exactly which settings to change when the visual is made larger or smaller. Preserve readable labels and avoid clipping.
+
+3. Add hover tooltips that explain each node or flow in plain language. Include its name, the current filtered USD amount, and a short definition (for example, cost of goods is the purchase cost of items sold; gross profit is revenue minus cost of goods and excludes labor and overhead). Make the tooltip values follow the same `Year Month`, `Region`, and `StoreName` filters as the chart. Show numeric values with clear USD formatting. Do not imply supplier, transfer, or physical-product movement.
+
+Return the complete corrected Vega spec, any additional numeric DAX measures only if truly needed, exact Deneb field bindings, and concise replacement steps. Keep existing measures unchanged. Confirm the spec uses Vega, not Vega-Lite, and check compatibility with the installed Deneb version/provider. If you cannot verify or implement a requirement, say so and give the simplest manual workaround. Do not claim the visual rendered or resized until I verify it in Power BI Desktop.</pre></details>
+      </article>
+      <article class="prompt-card" id="prompt-3">
+        <div class="prompt-title"><div><span class="iteration">PROMPT 03 · DESIGN PASS</span><h3>Make the Sankey more expressive</h3></div><button class="copy-button" data-copy="sankey-prompt-3">Copy prompt</button></div>
+        <details><summary>Expand full prompt</summary><pre id="sankey-prompt-3">You are a Principal Power BI Dashboard Developer. Give the current Revenue-to-Profit Sankey a more eye-catching, polished design that showcases what Deneb and AI can do. This is the next design iteration, not a new chart: keep the same four financial flows, values, filter-aware context labels, responsive behavior or beginner-editable size controls, and explanatory hover tooltips. Do not change the DAX or dashboard data.
+
+Add intentional accent colors and a more colorful chart title. Use a small number of clear visual accents to distinguish prescription and front-store revenue, cost of goods, and gross profit. You may go beyond the existing report colors, but keep the result cohesive, professional, high-contrast, and easy to read. Consider subtle node treatments, flow colors, a title accent or underline, and small icons where they clarify the categories. Avoid decorative clutter, misleading symbols, color-only meaning, and supplier or transfer imagery.
+
+Use icons only if they work reliably in the installed Deneb/Vega provider without external files or web requests. Prefer simple built-in shapes or self-contained vector marks; otherwise use clearly labeled text and omit the icons. Make colors, title colors, icon/shape sizing, fonts, borders, spacing, and other styling easy to find and adjust near the top of the Vega spec.
+
+Return the complete replacement Vega spec and a brief explanation of the design choices and the few settings a beginner can change. Preserve filter behavior, labels, tooltips, chart resizing, number formatting, and all four reconciled flows. Confirm Vega (not Vega-Lite) compatibility with the installed Deneb version. Do not say the redesign rendered correctly until I verify it in Desktop.</pre></details>
+      </article>
+    </section>
+    <section class="validation-note"><span class="note-icon">✓</span><div><h2>Prompts are a starting point</h2><p>These examples will not always return the same DAX, JSON, or appearance. Models and reports vary. Adjust the names and details for your own model, inspect and validate every answer, and iterate until you get the result you want. The prompts do not prove that generated code ran or rendered.</p></div></section>
+    <section class="requirements"><b>Metric reminder:</b> Gross profit here is revenue less cost of goods. It excludes labor and overhead. This is a financial reconciliation, not a supplier or prescription-transfer pathway.</section>
+    <p class="copy-status" role="status" aria-live="polite"></p>
+  </main>
+  <footer><a class="brand" href="../../"><span class="brand-mark">P<span>+</span></span><span>POWER BI <i>+</i> AI LAB</span></a><span>Practical tutorials. Synthetic data. Thoughtful validation.</span><a href="../../">Back to prompt library ↑</a></footer>
+  <script src="../modern-power-bi-kpi-cards/script.js" defer></script>
+</body>
+</html>
